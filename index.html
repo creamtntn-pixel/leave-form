@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <img src="1-removebg-preview.png" alt="ตราโรงเรียน" style="width:150px; height:auto;">
   <title>แบบฟอร์มใบลา</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
@@ -9,16 +10,16 @@
     body {
       text-align: center;
       font-family: 'Prompt', sans-serif;
-      background-color: #f7f7f7;
+      background-color: #861f2c;
       padding: 20px;
     }
     form {
-      background: #fff;
+      background: #a59898;
       padding: 20px;
       max-width: 600px;
       margin: auto;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(190, 175, 175, 0.1);
     }
     label {
       display: block;
@@ -183,8 +184,9 @@
     }
 
 doc.setFontSize(14);
-doc.text("ลงชื่อ ..........................................", 120, 260);
-doc.text("ครูผู้รับทราบ", 135, 270);
+doc.text("ความคิดเห็นของอาจารย์ ................................................", 20, 280);
+doc.text("(ลงชื่อ) ...............................................................", 20, 290);
+
 
     doc.save(`ใบลา_${name}.pdf`);
   }
