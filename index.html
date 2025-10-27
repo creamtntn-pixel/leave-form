@@ -97,6 +97,9 @@
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
+
+
+
     const name = document.getElementById("studentName").value.trim();
     const studentClass = document.getElementById("studentClass").value.trim();
     const teacher = document.getElementById("teacherName").value.trim();
@@ -188,7 +191,11 @@ doc.text("ความคิดเห็นของอาจารย์ ......
 doc.text("(ลงชื่อ) ...............................................................", 20, 290);
 
 
-    doc.save(`ใบลา_${name}.pdf`);
+    const pdfBlob = doc.output("blob");
+showShareButton(pdfBlob);
+
+
+
   }
 
   function readFileAsDataURL(file) {
@@ -198,6 +205,41 @@ doc.text("(ลงชื่อ) .................................................
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
+  }
+</script>
+<!-- ปุ่มแชร์ -->
+<button id="shareButton" style="
+  background:#6b4d2a;
+  color:rgb(0, 0, 0);
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:10px;
+  display:none;">
+  📤 แชร์ไปหาครู
+</button>
+
+<script>
+  const shareButton = document.getElementById("shareButton");
+
+  async function sharePDF(pdfBlob) {
+    const file = new File([pdfBlob], "ใบลานักเรียน.pdf", { type: "application/pdf" });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: "ใบลานักเรียน",
+        text: "ส่งใบลานี้ให้ครูตรวจสอบครับ",
+        files: [file],
+      });
+    } else {
+      alert("เบราว์เซอร์นี้ยังไม่รองรับการแชร์ไฟล์โดยตรง");
+    }
+  }
+
+  function showShareButton(pdfBlob) {
+    shareButton.style.display = "inline-block";
+    shareButton.onclick = () => sharePDF(pdfBlob);
   }
 </script>
 
