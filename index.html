@@ -2,24 +2,36 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <img src="1-removebg-preview.png" alt="ตราโรงเรียน" style="width:150px; height:auto;">
   <title>แบบฟอร์มใบลา</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("✅ Service Worker registered"))
+      .catch(err => console.log("Service Worker failed: ", err));
+  }
+</script>
   <style>
     body {
       text-align: center;
       font-family: 'Prompt', sans-serif;
-      background-color: #861f2c;
+      background-color: #881515;
       padding: 20px;
     }
     form {
       background: #a59898;
       padding: 20px;
-      max-width: 600px;
+      max-width: 500px;
+      min-height: 100vh;
       margin: auto;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(190, 175, 175, 0.1);
+      box-sizing: border-box;
+      overflow-y: auto;
     }
     label {
       display: block;
@@ -32,13 +44,13 @@
       margin-top: 5px;
       box-sizing: border-box;
       border-radius: 4px;
-      border: 1px solid #ccc;
+      border: 1px solid #ffd4c2;
     }
     button {
       width: 100%;
       padding: 10px;
       margin-top: 20px;
-      background-color: #007bff;
+      background-color: #794f01;
       color: white;
       border: none;
       border-radius: 6px;
@@ -209,7 +221,7 @@ showShareButton(pdfBlob);
 </script>
 <!-- ปุ่มแชร์ -->
 <button id="shareButton" style="
-  background:#6b4d2a;
+  background:#0c8835;
   color:rgb(0, 0, 0);
   padding:10px 20px;
   border:none;
@@ -229,7 +241,7 @@ showShareButton(pdfBlob);
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         title: "ใบลานักเรียน",
-        text: "ส่งใบลานี้ให้ครูตรวจสอบครับ",
+        text: "ส่งใบลานี้ให้ครูตรวจสอบครับ/ค่ะ",
         files: [file],
       });
     } else {
