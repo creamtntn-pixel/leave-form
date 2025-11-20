@@ -1,0 +1,21 @@
+{
+  "name": "ฟอร์มใบลาโรงเรียน",
+  "short_name": "ฟอร์มใบลา",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#861f2c",
+  "theme_color": "#861f2c",
+  "description": "สร้างและแชร์ใบลา PDF สำหรับนักเรียน",
+  "icons": [
+    {
+      "src": "1-removebg-preview.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "1-removebg-preview.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
